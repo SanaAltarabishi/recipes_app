@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes/core/functions/group_recipes_by_meal_type.dart';
 import 'package:recipes/core/resources/colors.dart';
+import 'package:recipes/core/resources/keys.dart';
 import 'package:recipes/core/utils/build_context.dart';
 import 'package:recipes/recipe/domain/entity/recipes_entity.dart';
 
@@ -31,8 +32,8 @@ class RecipesSuccessWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             context.push('/RecipesGridScreen', extra: {
-              'mealType': mealType,
-              'recipes': groupedRecipes[mealType],
+              AppKeys.mealTypeKey: mealType,
+              AppKeys.recipesKey: groupedRecipes[mealType],
             });
           },
           child: Card(

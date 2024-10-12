@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes/core/resources/colors.dart';
+import 'package:recipes/core/resources/keys.dart';
 import 'package:recipes/core/utils/build_context.dart';
 import 'package:recipes/recipe/domain/entity/recipes_entity.dart';
 
@@ -66,7 +67,7 @@ class RecipesGridScreen extends StatelessWidget {
                       context.push(
                         '/RecipeDetails',
                         extra: {
-                          'recipe': recipe,
+                          AppKeys.recipeDetailsKey: recipe,
                         },
                       );
                     },
@@ -76,7 +77,7 @@ class RecipesGridScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(-2, 2),
+                            offset: const Offset(-2, 2),
                             color: AppColors.orangeTextColor.withOpacity(0.3),
                           )
                         ],

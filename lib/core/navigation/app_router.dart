@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:recipes/core/resources/keys.dart';
 import 'package:recipes/recipe/domain/entity/recipes_entity.dart';
 import 'package:recipes/recipe/presentation/view/home_page.dart';
 import 'package:recipes/recipe/presentation/view/recipe_details.dart';
@@ -28,8 +29,8 @@ class AppRouter {
           return CustomTransitionPage(
             key: state.pageKey,
             child: RecipesGridScreen(
-              mealType: data['mealType'] as String,
-              recipes: data['recipes'] as List<RecipeEntity>,
+              mealType: data[AppKeys.mealTypeKey] as String,
+              recipes: data[AppKeys.recipesKey] as List<RecipeEntity>,
             ),
             transitionsBuilder: _fadeTransition,
           );
@@ -43,7 +44,7 @@ class AppRouter {
             return CustomTransitionPage(
               key: state.pageKey,
               child: RecipeDetailsScreen(
-                recipe: data['recipe'] as RecipeEntity,
+                recipe: data[AppKeys.recipeDetailsKey] as RecipeEntity,
               ),
               transitionsBuilder: _fadeTransition,
             );
