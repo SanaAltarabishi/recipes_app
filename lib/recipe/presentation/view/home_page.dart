@@ -10,6 +10,7 @@ import 'package:recipes/recipe/data/data_source/remote_get_recipe_data_source.da
 import 'package:recipes/recipe/data/repo_implement/recipe_repo_imp.dart';
 import 'package:recipes/recipe/domain/use_case/get_resipes.dart';
 import 'package:recipes/recipe/presentation/recipes_bloc/recipes_bloc.dart';
+import 'package:recipes/recipe/presentation/widgets/failure_widget.dart';
 import 'package:recipes/recipe/presentation/widgets/recipes_success.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,10 +38,10 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: context.screenHeight * 0.02,
                 ),
-                 Text(
+                Text(
                   AppStrings.mealType,
                   style: TextStyle(
-                    fontSize: context.screenWidth*0.08,
+                    fontSize: context.screenWidth * 0.08,
                     fontWeight: FontWeight.bold,
                     color: AppColors.orangeTextColor,
                   ),
@@ -56,8 +57,8 @@ class HomePage extends StatelessWidget {
                           recipes: state.recipesResponseEntity.recipes,
                         );
                       } else if (state is RecipesFailure) {
-                        return Center(
-                          child: Text(state.message),
+                        return FailureWidget(
+                          message: state.message,
                         );
                       } else {
                         return const Center(
