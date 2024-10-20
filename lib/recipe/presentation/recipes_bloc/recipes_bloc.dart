@@ -11,9 +11,9 @@ class RecipesBloc extends Bloc<RecipesEvent, RecipesState> {
   final GetResipesUseCase getResipesUseCase;
   RecipesBloc(
     this.getResipesUseCase,
-  ) : super(RecipesInitial()) {
+  ) : super(const RecipesInitial()) {
     on<GetRecipes>((event, emit) async {
-      emit(RecipesLoading());
+      emit(const RecipesLoading());
 
       final failureOrEntity = await getResipesUseCase.call();
       failureOrEntity.fold((failure) {

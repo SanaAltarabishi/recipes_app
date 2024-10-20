@@ -2,22 +2,49 @@
 part of 'recipes_bloc.dart';
 
 @immutable
-sealed class RecipesState {}
+sealed class RecipesState {
+  const RecipesState();
+}
 
-final class RecipesInitial extends RecipesState {}
+final class RecipesInitial extends RecipesState {
+  const RecipesInitial();
+}
 
-class RecipesLoading extends RecipesState {}
+class RecipesLoading extends RecipesState {
+  const RecipesLoading();
+}
 
 class RecipesFailure extends RecipesState {
   final String message;
-  RecipesFailure({
+  const RecipesFailure({
     required this.message,
   });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is RecipesFailure && other.message == message;
+  }
+
+  @override
+  int get hashCode => message.hashCode;
 }
 
 class RecipesSuccess extends RecipesState {
   final RecipesResponseEntity recipesResponseEntity;
-  RecipesSuccess({
+  const RecipesSuccess({
     required this.recipesResponseEntity,
   });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is RecipesSuccess &&
+        other.recipesResponseEntity == recipesResponseEntity;
+  }
+
+  @override
+  int get hashCode => recipesResponseEntity.hashCode;
 }
