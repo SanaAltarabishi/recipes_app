@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 class RecipesResponseEntity {
@@ -69,21 +70,21 @@ class RecipeEntity {
   }
 
   @override
-  int get hashCode {
-    return id.hashCode ^
-        name.hashCode ^
-        ingredients.hashCode ^
-        instructions.hashCode ^
-        prepTimeMinutes.hashCode ^
-        cookTimeMinutes.hashCode ^
-        servings.hashCode ^
-        difficulty.hashCode ^
-        cuisine.hashCode ^
-        caloriesPerServing.hashCode ^
-        tags.hashCode ^
-        image.hashCode ^
-        rating.hashCode ^
-        reviewCount.hashCode ^
-        mealType.hashCode;
+int get hashCode {
+  return id.hashCode ^
+      name.hashCode ^
+      const DeepCollectionEquality().hash(ingredients) ^  // استخدام listEquals هنا
+      const DeepCollectionEquality().hash(instructions) ^
+      prepTimeMinutes.hashCode ^
+      cookTimeMinutes.hashCode ^
+      servings.hashCode ^
+      difficulty.hashCode ^
+      cuisine.hashCode ^
+      caloriesPerServing.hashCode ^
+      const DeepCollectionEquality().hash(tags) ^
+      image.hashCode ^
+      rating.hashCode ^
+      reviewCount.hashCode ^
+      const DeepCollectionEquality().hash(mealType);
   }
 }

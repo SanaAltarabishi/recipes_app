@@ -135,6 +135,48 @@ void main() {
           expect(recipe.prepTimeMinutes, 0);
         },
       );
+
+      test('Entities with same properties should have same hashcode', () {
+        final recipe1 = RecipeEntity(
+          id: 1,
+          name: 'Pasta',
+          ingredients: ['Noodles', 'Tomato Sauce'],
+          instructions: ['Boil water', 'Cook noodles'],
+          prepTimeMinutes: 10,
+          cookTimeMinutes: 15,
+          servings: 2,
+          difficulty: 'Easy',
+          cuisine: 'Italian',
+          caloriesPerServing: 200,
+          tags: ['Dinner'],
+          image: 'image_url',
+          rating: 4.5,
+          reviewCount: 10,
+          mealType: ['Lunch'],
+        );
+
+        final recipe2 = RecipeEntity(
+          id: 1,
+          name: 'Pasta',
+          ingredients: ['Noodles', 'Tomato Sauce'],
+          instructions: ['Boil water', 'Cook noodles'],
+          prepTimeMinutes: 10,
+          cookTimeMinutes: 15,
+          servings: 2,
+          difficulty: 'Easy',
+          cuisine: 'Italian',
+          caloriesPerServing: 200,
+          tags: ['Dinner'],
+          image: 'image_url',
+          rating: 4.5,
+          reviewCount: 10,
+          mealType: ['Lunch'],
+        );
+        print('Recipe1 hashCode: ${recipe1.hashCode}');
+        print('Recipe2 hashCode: ${recipe2.hashCode}');
+        expect(recipe1, equals(recipe2));
+        expect(recipe1.hashCode, equals(recipe2.hashCode));
+      });
     },
   );
 
