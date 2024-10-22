@@ -30,6 +30,7 @@ class HomePage extends StatelessWidget {
         ),
       )..add(GetRecipes()),
       child: Scaffold(
+        key: const Key('first_page'),
         backgroundColor: AppColors.pastelBeige,
         body: SafeArea(
           child: Center(

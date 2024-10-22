@@ -6,7 +6,6 @@ import 'package:recipes/core/error/failures.dart';
 import 'package:recipes/recipe/domain/entity/recipes_entity.dart';
 import 'package:recipes/recipe/domain/repo/recipe_repo.dart';
 import 'package:recipes/recipe/domain/use_case/get_resipes.dart';
-
 import 'get_resipes_test.mocks.dart';
 
 // class MockRecipeRepo extends Mock implements RecipeRepo {}
@@ -101,4 +100,15 @@ void main() {
   );
 
   //!scenario 4 : cach data :
+  //! scenario 5 : no internet :
+  test(
+    'should return internetConnectionError when there is no internet connection',
+    () async {
+      when(mockRecipeRepo.getResipes())
+          .thenAnswer((_) async => Left(NetworkFailure()));
+      final result = await useCase();
+      expect(result, Left(NetworkFailure()));
+      verify(mockRecipeRepo.getResipes()).called(1);
+    },
+  );
 }
