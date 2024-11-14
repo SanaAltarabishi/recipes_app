@@ -4,6 +4,7 @@ import 'package:recipes/core/resources/colors.dart';
 import 'package:recipes/core/resources/keys.dart';
 import 'package:recipes/core/utils/build_context.dart';
 import 'package:recipes/recipe/domain/entity/recipes_entity.dart';
+import 'package:recipes/recipe/presentation/widgets/image_network_widget.dart';
 
 class RecipesGridScreen extends StatelessWidget {
   final String mealType;
@@ -87,11 +88,10 @@ class RecipesGridScreen extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.network(
-                            recipe.image,
+                          ImageNetworkWidget(
+                            recipe: recipe,
                             height: context.screenHeight * 0.09,
                             width: context.screenWidth * 0.3,
-                            fit: BoxFit.cover,
                           ),
                           SizedBox(height: context.screenHeight * 0.01),
                           Text(

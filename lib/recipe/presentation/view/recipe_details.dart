@@ -5,6 +5,7 @@ import 'package:recipes/core/utils/build_context.dart';
 import 'package:recipes/recipe/domain/entity/recipes_entity.dart';
 import 'package:recipes/recipe/presentation/widgets/details_app_bar.dart';
 import 'package:recipes/recipe/presentation/widgets/details_row.dart';
+import 'package:recipes/recipe/presentation/widgets/image_network_widget.dart';
 
 class RecipeDetailsScreen extends StatefulWidget {
   final RecipeEntity recipe;
@@ -42,11 +43,10 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
               SizedBox(
                 height: context.screenHeight * 0.02,
               ),
-              Image.network(
-                widget.recipe.image,
+              ImageNetworkWidget(
+                recipe: widget.recipe,
                 height: context.screenHeight * 0.3,
                 width: context.screenWidth,
-                fit: BoxFit.cover,
               ),
               SizedBox(
                 height: context.screenHeight * 0.02,
